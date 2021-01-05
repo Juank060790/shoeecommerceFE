@@ -96,7 +96,9 @@ export default function CartScreen(props) {
                 onClick={checkoutHandler}
                 className="primary block"
                 disable={cartItems.length === 0}
-              ></button>
+              >
+                Place Order
+              </button>
             </li>
           </ul>
         </div>
