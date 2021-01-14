@@ -31,6 +31,7 @@ orderRouter.post(
         user: req.user._id,
       });
       const createdOrder = await order.save();
+      console.log("ORDERBACKEND", createdOrder);
       res
         .status(201)
         .send({ message: "New Order Created", order: createdOrder });

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
@@ -5,10 +6,9 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  font-family: 'Amatic SC', cursive;  -moz-osx-font-smoothing: grayscale;
 }
 #root {
   height: 100%;
@@ -94,6 +94,10 @@ button.small {
   font-size: 1.2rem;
 }
 /* Header */
+.shoesList{
+margin-top: 30%;
+}
+
 header a {
   color: #ffffff;
   padding: 1rem;
@@ -187,11 +191,15 @@ img.small {
   width: 100%;
 }
 img.medium {
-  max-width: 29rem;
+  max-width: 28rem;
   width: 100%;
 }
 img.large {
   width: 100%;
+}
+
+.shoesImage{
+  padding: 1rem;
 }
 
 /* Card */
@@ -363,4 +371,26 @@ img.large {
 }
 .pagination a.active {
   font-weight: bold;
+}
+
+/* HEADER */
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+canvas {
+	background-image: radial-gradient(#666, #333);
+}
+
+#instructions {
+	position: absolute;
+	color: #fff;
+	bottom: 0;
+	padding-bottom: 6px;
+	font-family: sans-serif;
+	width: 100%;
+	text-align: center;
+	pointer-events: none;
 }

@@ -7,18 +7,23 @@ import {
 import Axios from "axios";
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(`/api/products/${productId}`);
+  const { data } = await Axios.get(
+    `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
+  );
+  const addItem = data.results[0];
+  console.log("ADD to cartv ---->", addItem.countInStock);
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      countInStock: data.countInStock,
-      product: data._id,
+      name: addItem.name,
+      image: addItem.media.imageUrl,
+      price: addItem.retailPrice,
+      countInStock: 10,
+      product: addItem.id,
       qty,
     },
   });
+
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 

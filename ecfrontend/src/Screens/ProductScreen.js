@@ -12,6 +12,9 @@ export default function ProductScreen(props) {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const [qty, setQty] = useState(1);
+  const rating = Math.floor(Math.random() * 5 + 1);
+  const numReviews = Math.floor(Math.random() * 200 + 1);
+  const countInStock = Math.floor(Math.random() * 20 + 1);
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
@@ -34,7 +37,7 @@ export default function ProductScreen(props) {
               <div className="col-2">
                 <img
                   className="large"
-                  src={product.image}
+                  src={product.media.imageUrl}
                   alt={product.name}
                 ></img>
               </div>
@@ -44,15 +47,16 @@ export default function ProductScreen(props) {
                     <h1>{product.name}</h1>
                   </li>
                   <li>
-                    <Rating
-                      rating={product.rating}
-                      numReviews={product.numReviews}
-                    ></Rating>
+                    <Rating rating={rating} numReviews={numReviews}></Rating>
                   </li>
-                  <li>Pirce : ${product.price}</li>
+                  <li>Price : ${product.retailPrice}</li>
                   <li>
                     Description:
-                    <p>{product.description}</p>
+                    <p>{product.shoe}</p>
+                  </li>
+                  <li>
+                    <p>{product.year}</p>
+                    <p>{product.gender}</p>
                   </li>
                 </ul>
               </div>
@@ -62,14 +66,14 @@ export default function ProductScreen(props) {
                     <li>
                       <div className="row">
                         <div>Price</div>
-                        <div className="price">${product.price}</div>
+                        <div className="price">${product.retailPrice}</div>
                       </div>
                     </li>
                     <li>
                       <div className="row">
                         <div>Status</div>
                         <div>
-                          {product.countInStock > 0 ? (
+                          {countInStock > 0 ? (
                             <span className="success">In Stock</span>
                           ) : (
                             <span className="danger">Unavailable</span>
@@ -77,7 +81,7 @@ export default function ProductScreen(props) {
                         </div>
                       </div>
                     </li>
-                    {product.countInStock > 0 && (
+                    {countInStock > 0 && (
                       <>
                         <li>
                           <div className="row">
@@ -87,13 +91,11 @@ export default function ProductScreen(props) {
                                 value={qty}
                                 onChange={(e) => setQty(e.target.value)}
                               >
-                                {[...Array(product.countInStock).keys()].map(
-                                  (x) => (
-                                    <option key={x + 1} value={x + 1}>
-                                      {x + 1}
-                                    </option>
-                                  )
-                                )}
+                                {[...Array(countInStock).keys()].map((x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                ))}
                               </select>
                             </div>
                           </div>

@@ -25,6 +25,7 @@ export default function CartScreen(props) {
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
   };
+  console.log("CARTITEMS", qty);
   return (
     <div className="row top">
       <div className="col-2">
@@ -95,7 +96,7 @@ export default function CartScreen(props) {
                 type="button"
                 onClick={checkoutHandler}
                 className="primary block"
-                disable={cartItems.length === 0}
+                disable={cartItems.length === 0 ? "disable" : "enabled"}
               >
                 Place Order
               </button>

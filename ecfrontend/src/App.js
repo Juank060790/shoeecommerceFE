@@ -13,7 +13,9 @@ import PlaceOrderScreen from "./Screens/PlaceOrderScreen";
 import OrderScreen from "./Screens/OrderScreen";
 import OrderHistoryScreen from "./Screens/OrderHistoryScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
-
+import PrivateRoute from "./Components/PrivateRoute";
+import ProductList from "./Components/ProductList";
+// import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const cart = useSelector((state) => state.cart);
   const userSignin = useSelector((state) => state.userSignin);
@@ -30,17 +32,11 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazona
+              Shoe Ecommerce DEMO
             </Link>
           </div>
           <div>
-            <Link to="/cart">
-              Cart
-              {cartItems.length > 0 && (
-                <span className="badge"> {cartItems.length}</span>
-              )}
-            </Link>
-
+            {" "}
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -64,6 +60,36 @@ function App() {
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
+            <Link to="/cart">
+              Cart
+              {cartItems.length > 0 && (
+                <span className="badge"> {cartItems.length}</span>
+              )}
+            </Link>
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+
+                  <li>
+                    <Link to="/productList">Products</Link>
+                  </li>
+
+                  <li>
+                    <Link to="/orderList">Orders</Link>
+                  </li>
+
+                  <li>
+                    <Link to="/userList">Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
@@ -76,7 +102,11 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
-          <Route path="/profile" component={ProfileScreen}></Route>
+          <Route path="/productList" component={ProductList}></Route>
+          <PrivateRoute
+            path="/profile"
+            component={ProfileScreen}
+          ></PrivateRoute>
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>

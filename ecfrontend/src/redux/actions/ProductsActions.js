@@ -13,7 +13,9 @@ export const listProducts = () => async (dispatch) => {
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await Axios.get("/api/products");
+    const { data } = await Axios.get(
+      "https://api.thesneakerdatabase.com/v1/sneakers?limit=20&page=20"
+    );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
@@ -23,8 +25,10 @@ export const listProducts = () => async (dispatch) => {
 export const detailsProduct = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
   try {
-    const { data } = await Axios.get(`/api/products/${productId}`);
-    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+    const { data } = await Axios.get(
+      `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
+    );
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.results[0] });
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
