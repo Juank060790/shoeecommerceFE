@@ -1,67 +1,88 @@
 import React from "react";
-import { Pagination } from "react-bootstrap";
 
-const PaginationItem = ({ pageNum, setPageNum, totalPageNum, loading }) => {
-  const handleClick = (page) => {
-    if (!loading) {
-      setPageNum(parseInt(page));
-    }
-  };
+const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
+  var btns = document.querySelectorAll(".btn");
+  var paginationWrapper = document.querySelector(".pagination-wrapper");
+  // var bigDotContainer = document.querySelector(".big-dot-container");
+  // var littleDot = document.querySelector(".little-dot");
 
-  const handleClickOnFirst = () => {
-    if (!loading) {
-      setPageNum(1);
-    }
-  };
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", btnClick);
+  }
 
-  const handleClickOnLast = () => {
-    if (!loading) {
-      setPageNum(totalPageNum);
+  function btnClick() {
+    if (this.classList.contains("btn--prev")) {
+      paginationWrapper.classList.add("transition-prev");
+    } else {
+      paginationWrapper.classList.add("transition-next");
+    }
+
+    // var timeout = setTimeout(cleanClasses, 500);
+  }
+
+  // function cleanClasses() {
+  //   if (paginationWrapper.classList.contains("transition-next")) {
+  //     paginationWrapper.classList.remove("transition-next");
+  //   } else if (paginationWrapper.classList.contains("transition-prev")) {
+  //     paginationWrapper.classList.remove("transition-prev");
+  //   }
+  // }
+
+  // PAGINATION FUNCTIONS
+
+  const handleClickOnPrev = (e) => {
+    e.preventDefault();
+
+    if (pageNumber > 1 && !loading) {
+      setPageNumber((num) => num - 1);
+      // console.log("PREV");
     }
   };
-  const handleClickOnNext = () => {
-    if (pageNum < totalPageNum && !loading) {
-      setPageNum((num) => num + 1);
-    }
-  };
-  const handleClickOnPrev = () => {
-    if (pageNum > 1 && !loading) {
-      setPageNum((num) => num - 1);
+  const handleClickOnNext = (e) => {
+    e.preventDefault();
+
+    if (pageNumber < pages && !loading) {
+      setPageNumber((num) => num + 1);
+      // console.log("NEXT", pageNumer);
     }
   };
 
   return (
-    <Pagination className="justify-content-center" disabled={loading}>
-      <Pagination.First disabled={pageNum === 1} onClick={handleClickOnFirst} />
-      <Pagination.Prev disabled={pageNum === 1} onClick={handleClickOnPrev} />
-      <Pagination.Item active={pageNum === 1} onClick={() => handleClick(1)}>
-        {1}
-      </Pagination.Item>
+    <div className="pagination-wrapper">
+      <svg
+        onClick={handleClickOnPrev}
+        className="btn btn--prev"
+        height="96"
+        viewBox="0 0 24 24"
+        width="96"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+        <path d="M0-.5h24v24H0z" fill="none" />
+      </svg>
 
-      {pageNum - 1 > 1 && <Pagination.Ellipsis />}
-      {pageNum > 1 && pageNum < totalPageNum && (
-        <Pagination.Item active>{pageNum}</Pagination.Item>
-      )}
-      {totalPageNum > pageNum + 1 && <Pagination.Ellipsis />}
+      <div className="pagination-container">
+        <div className="little-dot  little-dot--first"></div>
+        <div className="little-dot">
+          <div className="big-dot-container">
+            <div className="big-dot"></div>
+          </div>
+        </div>
+        <div className="little-dot  little-dot--last"></div>
+      </div>
 
-      {totalPageNum > 1 && (
-        <Pagination.Item
-          active={pageNum === totalPageNum}
-          onClick={() => handleClick(totalPageNum)}
-        >
-          {totalPageNum}
-        </Pagination.Item>
-      )}
-
-      <Pagination.Next
-        disabled={pageNum === totalPageNum}
+      <svg
         onClick={handleClickOnNext}
-      />
-      <Pagination.Last
-        disabled={pageNum === totalPageNum}
-        onClick={handleClickOnLast}
-      />
-    </Pagination>
+        className="btn btn--next"
+        height="96"
+        viewBox="0 0 24 24"
+        width="96"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+        <path d="M0-.25h24v24H0z" fill="none" />
+      </svg>
+    </div>
   );
 };
 

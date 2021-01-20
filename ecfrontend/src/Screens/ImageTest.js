@@ -41,7 +41,7 @@ export const ImageTest = () => {
   }, [selected]);
   const backward = React.useCallback(() => {
     if (selected === 0) return;
-    console.log("Should go back", selected);
+    // console.log("Should go back", selected);
     setSelected((s) => {
       const newVal = s - 1;
 
@@ -111,7 +111,7 @@ function init(node, images) {
   // create a timeline for the two transitions
   var t1 = gsap.timeline({ paused: true, yoyo: true });
   t1.eventCallback("onComplete", (...args) => {
-    console.log("onComplete: ", ...args);
+    // console.log("onComplete: ", ...args);
   });
   window.t1 = t1;
 
@@ -363,18 +363,18 @@ Slide.prototype.transition = function (time) {
       time: this.totalDuration,
       ease: "power0.inOut",
       onStart: () => {
-        console.log("transition start: ", time);
+        // console.log("transition start: ", time);
       },
       onComplete: () => {
-        console.log(
-          "transition forward done: ",
-          time,
-          "visible: ",
-          this.visible
-        );
+        // console.log(
+        //   "transition forward done: ",
+        //   time,
+        //   "visible: ",
+        //   this.visible
+        // );
       },
       onReverseComplete: () => {
-        console.log("transition back done: ", time);
+        // console.log("transition back done: ", time);
       },
     }
   );

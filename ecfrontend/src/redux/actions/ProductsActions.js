@@ -8,15 +8,18 @@ import {
   PRODUCT_LIST_FAIL,
 } from "../constants/Constants";
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = (pageNumber = 1) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
+    payload: pageNumber,
   });
   try {
     const { data } = await Axios.get(
-      "https://api.thesneakerdatabase.com/v1/sneakers?limit=20&page=20"
+      `https://api.thesneakerdatabase.com/v1/sneakers?limit=20&page=${pageNumber}`
     );
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+    const pages = Math.floor(data.count / 20);
+
+    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: { data, pages } });
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }
@@ -28,6 +31,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
     const { data } = await Axios.get(
       `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
     );
+
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.results[0] });
   } catch (error) {
     dispatch({

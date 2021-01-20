@@ -1,17 +1,23 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
 
 export default function LoadingBox() {
   return (
     <>
-      <div className="loading">
-        <i className="fa fa-spinner fa-spin"></i>{" "}
-      </div>
-      <div>
-        {" "}
-        <Spinner animation="grow" variant="danger" />
-        Loading...
-        <Spinner animation="grow" />
+      <div className="loading-spinner-box">
+        <div className="loadingio-spinner-bean-eater-argqbjomisr loading-spinner-box">
+          <div className="ldio-euqy5cvlfcs">
+            <div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

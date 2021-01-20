@@ -22,10 +22,10 @@ export default function PlaceOrderScreen(props) {
   cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   const dispatch = useDispatch();
-  console.log("PLACE ORDER", cart.cartItems);
+  // console.log("PLACE ORDER", cart.cartItems);
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
-    console.log("PLACE ORDER", orderCreate);
+    // console.log("PLACE ORDER", orderCreate);
   };
 
   useEffect(() => {

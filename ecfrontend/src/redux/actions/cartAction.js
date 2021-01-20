@@ -11,7 +11,7 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
     `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
   );
   const addItem = data.results[0];
-  console.log("ADD to cartv ---->", addItem.countInStock);
+  // console.log("ADD to cartv ---->", addItem.countInStock);
   dispatch({
     type: CART_ADD_ITEM,
     payload: {
