@@ -51,7 +51,7 @@ const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
     <div className="pagination-wrapper">
       <svg
         onClick={handleClickOnPrev}
-        className="btn btn--prev"
+        className="btn  btn--prev"
         height="96"
         viewBox="0 0 24 24"
         width="96"
@@ -73,7 +73,7 @@ const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
 
       <svg
         onClick={handleClickOnNext}
-        className="btn btn--next"
+        className="btn  btn--next"
         height="96"
         viewBox="0 0 24 24"
         width="96"

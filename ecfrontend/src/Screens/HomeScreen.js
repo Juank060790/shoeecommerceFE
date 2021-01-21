@@ -21,28 +21,24 @@ export default function HomeScreen() {
 
   return (
     <>
-      <div className="header-container">
-        <div className="text-center header">
-          <h1 className="headet-title">Shoe Ecommerce</h1>
-          <p className="header-subtitle">
-            This project is just a demo of an eccomerce using MERN stack and
-            other libraries.
-          </p>
-        </div>
-        <div>
-          <ImageTest />
-        </div>
-      </div>{" "}
-      <div className="text-center">
-        <SubMenu />
+      <div className="header-flex-style">
+        <div className="header-container">
+          <div className="text-center header">
+            <h1 className="headet-title">Shoe Ecommerce</h1>
+            <p className="header-subtitle">
+              This project is just a demo of an e-shop using MERN stack and
+              other libraries, and a sneakers API.
+            </p>
+          </div>
+          <div>
+            <ImageTest />
+          </div>
+        </div>{" "}
       </div>
       <div>
-        <PaginationItem
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-          pages={pages}
-          loading={loading}
-        />
+        <div className="text-center">
+          <SubMenu />
+        </div>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -54,6 +50,14 @@ export default function HomeScreen() {
             ))}
           </div>
         )}
+        <div className="bg-black">
+          <PaginationItem
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+            pages={pages}
+            loading={loading}
+          />
+        </div>
       </div>
     </>
   );

@@ -8,10 +8,19 @@ gsap.defaults({ overwrite: "auto" });
 
 const imageList = [
   "https://res.cloudinary.com/juankspw/image/upload/v1611024814/dhqpxew398trkmhjaagi.jpg",
-
   "https://res.cloudinary.com/juankspw/image/upload/v1611025251/ddhrtpqjxs89m16zvrne.jpg",
   "https://res.cloudinary.com/juankspw/image/upload/v1611024814/sbtb8edaycxe25gk6ifk.jpg",
   "https://res.cloudinary.com/juankspw/image/upload/v1611024813/tlg8oqr5z4gevoc3cow2.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158534/ynrqwjfildafeheejy7q.png",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158534/a7rrgqk8pd7sbbwaqmep.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158533/jyxzlpp6dtvnm818b9lv.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611024814/dhqpxew398trkmhjaagi.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611025251/ddhrtpqjxs89m16zvrne.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611024814/sbtb8edaycxe25gk6ifk.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611024813/tlg8oqr5z4gevoc3cow2.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158534/ynrqwjfildafeheejy7q.png",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158534/a7rrgqk8pd7sbbwaqmep.jpg",
+  "https://res.cloudinary.com/juankspw/image/upload/v1611158533/jyxzlpp6dtvnm818b9lv.jpg",
 ];
 
 const DURATION = 3;

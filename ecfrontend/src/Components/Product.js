@@ -42,7 +42,7 @@ export default function Product(props) {
       </Link>
       <div className={`${gridColor ? "card-body linkCardBlack" : "card-body"}`}>
         <Link to={`/product/${product.id}`}>
-          <h2>{product.name}</h2>
+          <h2 className="title-cards">{product.name}</h2>
         </Link>
         <Rating rating={rating} numReviews={numReviews}></Rating>
         <div className="price">${product.retailPrice}</div>

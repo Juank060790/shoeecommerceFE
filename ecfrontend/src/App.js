@@ -29,10 +29,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <header className="row">
+        <header className="menu-top row">
           <div>
             <Link className="brand" to="/">
-              Shoe Ecommerce DEMO
+              Shoe Shop DEMO
             </Link>
           </div>
 
