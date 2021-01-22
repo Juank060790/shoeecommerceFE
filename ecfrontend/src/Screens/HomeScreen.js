@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../redux/actions/ProductsActions";
 import { ImageTest } from "./ImageTest";
 import SubMenu from "../Components/SubMenu";
-import PaginationItem from "../Components/Pagination";
+// import PaginationItem from "../Components/Pagination";
 
 export default function HomeScreen() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products, pages } = productList;
-
+  const { loading, error, products } = productList;
+  // eslint-disable-next-line
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function HomeScreen() {
               other libraries, and a sneakers API.
             </p>
           </div>
-          <div>
+          <div className="canvas-slide">
             <ImageTest />
           </div>
         </div>{" "}
@@ -50,15 +50,15 @@ export default function HomeScreen() {
             ))}
           </div>
         )}
-        <div className="bg-black">
-          <PaginationItem
-            pageNumber={pageNumber}
-            setPageNumber={setPageNumber}
-            pages={pages}
-            loading={loading}
-          />
-        </div>
       </div>
+      {/* <div className="bg-black">
+        <PaginationItem
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          pages={pages}
+          loading={loading}
+        />
+      </div> */}
     </>
   );
 }
