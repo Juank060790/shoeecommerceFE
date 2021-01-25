@@ -23,7 +23,6 @@ body {
 /* Layout */
 
 .header-flex-style {
-
   display: flex;
   flex-wrap: wrap;
   /* background-color:black; */
@@ -67,7 +66,7 @@ main {
 }
 footer {
   padding: 2%;
-  width: 100%;
+  /* width: 100%; */
   grid-area: footer;
   background-color: black;
   color: #ffffff;
@@ -251,7 +250,7 @@ img.large {
 }
 
 .title-cards {
-  font-size: clamp(1rem, 50vw, 1rem);
+  font-size: clamp(1.3rem, 50vw, 1rem);
 }
 
 .linkCardBlack > a {
@@ -417,20 +416,6 @@ img.large {
   border-radius: 0 1rem 1rem 0;
   border-left: 0;
 }
-/* Pagination */
-/* .pagination a {
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-  border: 0.1rem #a4a4a4 solid;
-  font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.pagination a.active {
-  font-weight: bold;
-} */
 
 /* HEADER */
 
@@ -663,8 +648,17 @@ Main {
   transform: translateX(100%);
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Pagination {
-  background-color: black;
+  padding-top: 5%;
+  bottom: 0;
+  margin: 1rem;
+  transform: translate(0%, 0%);
 }
 /* Pagination */
 
@@ -677,7 +671,7 @@ Main {
   text-align: center;
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
   .pagination-wrapper {
     bottom: 50%;
     left: 80%;
@@ -706,7 +700,7 @@ Main {
     text-align: center;
     padding: 5rem;
   }
-}
+} */
 
 .btn {
   position: absolute;

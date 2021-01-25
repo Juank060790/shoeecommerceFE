@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import { signout } from "./redux/actions/userActions";
@@ -15,10 +15,7 @@ import OrderHistoryScreen from "./Screens/OrderHistoryScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 import PrivateRoute from "./Components/PrivateRoute";
 import ProductList from "./Components/ProductList";
-import { listProducts } from "./redux/actions/ProductsActions";
-import PaginationItem from "./Components/Pagination";
 
-// import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const cart = useSelector((state) => state.cart);
   const userSignin = useSelector((state) => state.userSignin);
@@ -30,15 +27,6 @@ function App() {
     dispatch(signout());
   };
 
-  const productList = useSelector((state) => state.productList);
-  const { loading, pages } = productList;
-
-  const [pageNumber, setPageNumber] = useState(1);
-
-  useEffect(() => {
-    dispatch(listProducts(pageNumber));
-  }, [dispatch, pageNumber]);
-
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -46,21 +34,9 @@ function App() {
           <div>
             <div>
               <Link className="brand" to="/">
-                Shoe Shop DEMO
+                ShoeShop DEMO
               </Link>
             </div>
-            {pageNumber ? (
-              <div className="Pagination">
-                <PaginationItem
-                  pageNumber={pageNumber}
-                  setPageNumber={setPageNumber}
-                  pages={pages}
-                  loading={loading}
-                />
-              </div>
-            ) : (
-              <div> </div>
-            )}
 
             <div>
               {" "}
