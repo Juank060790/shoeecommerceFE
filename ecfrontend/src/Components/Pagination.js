@@ -16,17 +16,17 @@ const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
     } else {
       paginationWrapper.classList.add("transition-next");
     }
-
-    // var timeout = setTimeout(cleanClasses, 500);
+    // eslint-disable-next-line
+    var timeout = setTimeout(cleanClasses, 500);
   }
 
-  // function cleanClasses() {
-  //   if (paginationWrapper.classList.contains("transition-next")) {
-  //     paginationWrapper.classList.remove("transition-next");
-  //   } else if (paginationWrapper.classList.contains("transition-prev")) {
-  //     paginationWrapper.classList.remove("transition-prev");
-  //   }
-  // }
+  function cleanClasses() {
+    if (paginationWrapper.classList.contains("transition-next")) {
+      paginationWrapper.classList.remove("transition-next");
+    } else if (paginationWrapper.classList.contains("transition-prev")) {
+      paginationWrapper.classList.remove("transition-prev");
+    }
+  }
 
   // PAGINATION FUNCTIONS
 

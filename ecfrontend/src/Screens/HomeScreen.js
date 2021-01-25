@@ -12,7 +12,6 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, pages } = productList;
-
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function HomeScreen() {
               other libraries, and a sneakers API.
             </p>
           </div>
-          <div>
+          <div className="canvas-slide">
             <ImageTest />
           </div>
         </div>{" "}
@@ -50,7 +49,9 @@ export default function HomeScreen() {
             ))}
           </div>
         )}
-        <div className="bg-black">
+      </div>
+      <div className="pagination-container">
+        <div className="Pagination">
           <PaginationItem
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}
