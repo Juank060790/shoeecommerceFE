@@ -7,22 +7,17 @@ export default function Product(props) {
   const { product } = props;
   const rating = Math.floor(Math.random() * 5 + 1);
   const numReviews = Math.floor(Math.random() * 200 + 1);
-  const productList = useSelector(
-    (state) => state.productList.products.data.results
-  );
-
-  const Black = productList.indexOf(product);
+  // const productList = useSelector(
+  //   (state) => state.productList.products.data?.results
+  // );
+  const productList = useSelector((state) => state.productList);
+  const Black = productList.products.indexOf(product);
   const [gridColor, setGridColor] = useState(false);
 
-  // console.log("GRIDCOLOR", gridColor);
-
   const grid = () => {
-    // console.log("PRODUCT LIST", Black);
     if (Black % 2 === 0) {
-      // console.log("EVEN", gridColor);
       setGridColor(true);
     } else {
-      // console.log("ODD", gridColor);
       setGridColor(false);
     }
   };

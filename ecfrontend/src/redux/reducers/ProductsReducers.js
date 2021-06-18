@@ -11,6 +11,7 @@ export const productListReducer = (
   state = {
     loading: true,
     products: [],
+    pageNumber: 1,
   },
   action
 ) => {
@@ -21,7 +22,7 @@ export const productListReducer = (
       return {
         ...state,
         loading: false,
-        products: action.payload,
+        products: action.payload.data.data.results,
         pages: action.payload.pages,
         page: action.payload.page,
       };
@@ -32,7 +33,10 @@ export const productListReducer = (
   }
 };
 
-export const productDetailsReducer = (state = { loading: true }, action) => {
+export const productDetailsReducer = (
+  state = { loading: true, product: null },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return { loading: true };

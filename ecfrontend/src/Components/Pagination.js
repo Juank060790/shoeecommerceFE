@@ -35,7 +35,6 @@ const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
 
     if (pageNumber > 1 && !loading) {
       setPageNumber((num) => num - 1);
-      // console.log("PREV");
     }
   };
   const handleClickOnNext = (e) => {
@@ -43,7 +42,6 @@ const PaginationItem = ({ pageNumber, setPageNumber, pages, loading }) => {
 
     if (pageNumber < pages && !loading) {
       setPageNumber((num) => num + 1);
-      // console.log("NEXT", pageNumer);
     }
   };
 

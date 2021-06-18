@@ -30,39 +30,36 @@ export const ImageTest = () => {
   const [selected, setSelected] = React.useState(0);
   const forward = React.useCallback(() => {
     if (selected >= imageList.length - 1) return;
-    // console.log("Should go forward");
-    // console.log({ selected });
+
     setSelected((s) => {
       const newVal = s + 1;
       if (s > 0) {
         const toHide = slideSets.current[s - 1];
         const toShow = slideSets.current[s];
-        // console.log("Hiding / showing ", s - 1, " / ", s);
+
         toHide.forEach((tween) => (tween.visible = false));
         toShow.forEach((tween) => (tween.visible = true));
       }
       timeline.current.tweenFromTo(s * DURATION, newVal * DURATION);
-      // console.log("Tweening ", s * DURATION, newVal * DURATION);
+
       return newVal;
     });
   }, [selected]);
   const backward = React.useCallback(() => {
     if (selected === 0) return;
-    // console.log("Should go back", selected);
+
     setSelected((s) => {
       const newVal = s - 1;
 
       if (s < imageList.length - 1) {
         const toHide = slideSets.current[s];
         const toShow = slideSets.current[s - 1];
-        // console.log("Hiding / showing ", s, " / ", s - 1);
+
         toHide.forEach((tween) => (tween.visible = false));
         toShow.forEach((tween) => (tween.visible = true));
       }
 
       timeline.current.tweenFromTo(s * DURATION, newVal * DURATION);
-
-      // console.log("Tweening ", s * DURATION, newVal * DURATION);
 
       return newVal;
     });
@@ -117,9 +114,7 @@ function init(node, images) {
 
   // create a timeline for the two transitions
   var t1 = gsap.timeline({ paused: true, yoyo: true });
-  t1.eventCallback("onComplete", (...args) => {
-    // console.log("onComplete: ", ...args);
-  });
+  t1.eventCallback("onComplete", (...args) => {});
   window.t1 = t1;
 
   // create 2 slides. One will transition in, the other will transition out. This will occur simultaneously.
@@ -134,7 +129,6 @@ function init(node, images) {
     root.scene.add(slideIn);
 
     const thisPosition = idx * DURATION;
-    // console.log({ thisPosition });
     new THREE.ImageLoader().load(img, function (image) {
       slideOut.setImage(image);
     });
