@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd frontend && npm install && npm run build",
+    "build": "cd ecfrontend && npm install && npm run build",
     "start": "nodemon --watch ecbackend --exec node --experimental-modules ecbackend/server.js"
   },
   "author": "",
