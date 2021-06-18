@@ -7,23 +7,31 @@ import {
 import Axios from "axios";
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(
-    `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
-  );
-  const addItem = data.results[0];
-  // console.log("ADD to cartv ---->", addItem.countInStock);
-  dispatch({
-    type: CART_ADD_ITEM,
-    payload: {
-      name: addItem.name,
-      image: addItem.media.imageUrl,
-      price: addItem.retailPrice,
-      countInStock: 10,
-      product: addItem.id,
-      qty,
+  var options = {
+    method: "GET",
+    url: `https://v1-sneakers.p.rapidapi.com/v1/sneakers/${productId}`,
+    headers: {
+      "x-rapidapi-key": "d69a820839msh6e20908572e3ca7p114797jsn7f765f568098",
+      "x-rapidapi-host": "v1-sneakers.p.rapidapi.com",
     },
-  });
+  };
 
+  await Axios.request(options).then(function (data) {
+    console.log(`data`, data);
+    const addItem = data.data.results[0];
+    // console.log("ADD to cartv ---->", addItem.countInStock);
+    dispatch({
+      type: CART_ADD_ITEM,
+      payload: {
+        name: addItem.name,
+        image: addItem.media.imageUrl,
+        price: addItem.retailPrice,
+        countInStock: 10,
+        product: addItem.id,
+        qty,
+      },
+    });
+  });
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 

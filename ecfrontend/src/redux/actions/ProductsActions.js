@@ -8,31 +8,61 @@ import {
   PRODUCT_LIST_FAIL,
 } from "../constants/Constants";
 
-export const listProducts = (pageNumber = 1) => async (dispatch) => {
-  dispatch({
-    type: PRODUCT_LIST_REQUEST,
-    payload: pageNumber,
-  });
-  try {
-    const { data } = await Axios.get(
-      `https://api.thesneakerdatabase.com/v1/sneakers?limit=20&page=${pageNumber}`
-    );
-    const pages = Math.floor(data.count / 20);
+// const options = {
+//   method: "GET",
+//   url: "https://v1-sneakers.p.rapidapi.com/v1/sneakers",
+//   params: { limit: "20", page: 1 },
+//   headers: {
+//     "x-rapidapi-key": "d69a820839msh6e20908572e3ca7p114797jsn7f765f568098",
+//     "x-rapidapi-host": "v1-sneakers.p.rapidapi.com",
+//   },
+// };
 
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: { data, pages } });
-  } catch (error) {
-    dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
-  }
-};
+export const listProducts =
+  (pageNumber = 1) =>
+  async (dispatch) => {
+    dispatch({
+      type: PRODUCT_LIST_REQUEST,
+      payload: pageNumber,
+    });
+    try {
+      const options = {
+        method: "GET",
+        url: "https://v1-sneakers.p.rapidapi.com/v1/sneakers",
+        params: { limit: "20", page: `${pageNumber}` },
+        headers: {
+          "x-rapidapi-key":
+            "d69a820839msh6e20908572e3ca7p114797jsn7f765f568098",
+          "x-rapidapi-host": "v1-sneakers.p.rapidapi.com",
+        },
+      };
+      await Axios.request(options).then(function (data) {
+        const pages = Math.floor(data.data.count / 20);
+        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: { data, pages } });
+      });
+    } catch (error) {
+      dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+    }
+  };
 
 export const detailsProduct = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
   try {
-    const { data } = await Axios.get(
-      `https://api.thesneakerdatabase.com/v1/sneakers/${productId}`
-    );
+    var options = {
+      method: "GET",
+      url: `https://v1-sneakers.p.rapidapi.com/v1/sneakers/${productId}`,
+      headers: {
+        "x-rapidapi-key": "d69a820839msh6e20908572e3ca7p114797jsn7f765f568098",
+        "x-rapidapi-host": "v1-sneakers.p.rapidapi.com",
+      },
+    };
 
-    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.results[0] });
+    await Axios.request(options).then(function (data) {
+      dispatch({
+        type: PRODUCT_DETAILS_SUCCESS,
+        payload: data.data?.results[0],
+      });
+    });
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
