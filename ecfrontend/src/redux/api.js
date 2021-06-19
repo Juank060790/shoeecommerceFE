@@ -3,7 +3,7 @@ import axios from "axios";
 // import { alertActions } from "../redux/actions/alertActions";
 
 const api = axios.create({
-  baseURL: "https://shoecommerce.herokuapp.com/",
+  baseURL: `${process.env.REACT_APP_HOST}`,
   headers: {
     "Content-Type": "application/json",
   },
